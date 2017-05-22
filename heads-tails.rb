@@ -38,6 +38,7 @@ class HeadsTails
       puts "Invalid choice, please try again."
       side_choice
   end
+end
 
   def ht_game(side_choice)
     bet_won = @bet_amount * 2
