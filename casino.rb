@@ -10,7 +10,6 @@ class Casino
   def initialize
     puts "Welcome to our Ruby Casino!"
     @player = Player.new
-    @@user_wallet = @player.wallet.amount
     casino_menu
   end
 
@@ -19,18 +18,19 @@ class Casino
     #Game options
     #Bankroll
     #Quit
-      puts """Game Menu:\n1)Heads or Tails\n2)Blackjack\n3)Slots\n4)Roulette
-5)Go to Casino locations\n6)Bankroll\n7)Exit"""
-    menu_input = gets.to_i
-    case menu_input
+    playing = true
+    while playing
+      puts """Game Menu:\n1)Heads or Tails\n2)Blackjack\n3)Slots\n4)Roulette\n5)Go to Casino locations\n6)Bankroll\n7)Exit"""
+      menu_input = gets.to_i
+      case menu_input
       when 1
-        HeadsTails.new(@player, @@user_wallet)
+        HeadsTails.new(@player)
       when 2
-        blackjack.new(@player, @@user_wallet)
+        blackjack.new(@player)
       when 3
-        Slots.new(@player, @@user_wallet)
+        Slots.new(@player)
       when 4
-        roulette.new(@player, @@user_wallet)
+        roulette.new(@player)
       when 5
         locations_menu
       when 6
@@ -40,6 +40,7 @@ class Casino
       else
         puts "Invalid input. Please try again."
         casino_menu
+      end
     end
   end
 
@@ -58,7 +59,7 @@ class Casino
     puts "Please input the amount you would like to add to your wallet:"
     add_to_bankroll_input = gets.to_f
     puts "Your new balance is: $#{add_to_bankroll_input + @player.wallet.amount}."
-    @@user_wallet = add_to_bankroll_input + @player.wallet.amount
+    @player.wallet.amount = add_to_bankroll_input += @player.wallet.amount
     puts "1)Exit to menu"
     input = gets.to_i
     if input == 1
