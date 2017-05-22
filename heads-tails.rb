@@ -47,14 +47,17 @@ end
       puts "Congratulations! It is heads!"
       puts "$#{bet_won} have been added to your wallet."
       @player.wallet.amount += bet_won
+      puts "-------------\n-------------\n-------------"
     elsif side_choice == coin && 2
       puts "Congratulations! It is tails!"
       puts "$#{bet_won} have been added to your wallet."
       @player.wallet.amount += bet_won
+      puts "-------------\n-------------\n-------------"
     else
       puts "Sorry! You lost."
       puts "$#{@bet_amount} has been taken from your wallet."
       @player.wallet.amount -= @bet_amount
+      puts "-------------\n-------------\n-------------"
     end
   end
 end
