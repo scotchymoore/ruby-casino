@@ -59,17 +59,26 @@ class Slots
       "peach, apple, cherry",
       "peach, peach, peach"
     ]
-    puts "Ding!..Ding!..Ding!"
+    puts "Ding!"
+    sleep(1)
+    puts "Ding!"
+    sleep(1)
+    puts "Ding!"
+    sleep(1)
     user_spin = aquisition_array.sample
     puts user_spin
 
     if (user_spin == "cherry, cherry, cherry") || (user_spin == "peach, peach, peach") || (user_spin == "apple, apple, apple")
+      puts "-------------"
       puts "You have a match, Winner!!"
+      puts "-------------"
       puts "Congratulations, you have won $#{amount_won}."
       @player.wallet.amount += amount_won
 
     elsif (user_spin == "cherry, peach, apple") || (user_spin == "cherry, apple, peach") || (user_spin == "apple, peach, cherry") || (user_spin == "peach, apple, cherry")
+      puts "-------------"
       puts "Sorry, try again"
+      puts "-------------"
       puts "$#{@amount} has been taken from your wallet."
       @player.wallet.amount -= @amount
     end
