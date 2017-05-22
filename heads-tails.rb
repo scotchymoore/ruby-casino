@@ -52,7 +52,7 @@ end
       puts "$#{bet_won} have been added to your wallet."
       @player.wallet.amount += bet_won
     else
-      puts "Sorry! The coin landed on #{coin}."
+      puts "Sorry! You lost."
       puts "$#{@bet_amount} has been taken from your wallet."
       @player.wallet.amount -= @bet_amount
     end

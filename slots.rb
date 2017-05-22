@@ -1,9 +1,13 @@
 require 'pry'
 
 class Slots
-  def initialize(player, user_wallet)
+
+  attr_accessor :amount
+
+  def initialize(player)
     puts "Welcome to Slots!!"
-    puts "#{player.name} you have a balance of #{user_wallet}."
+    puts "#{player.name} you have a balance of #{player.wallet.amount}."
+    @player = player
     place_bets
   end
 
@@ -11,8 +15,8 @@ class Slots
 
   def place_bets
     puts "How much would you like to bet?"
-    amount = gets.to_f
-    puts "You have placed a bet of #{amount}. Is this correct?\n1)Yes\n2)No"
+    @amount = gets.to_f
+    puts "You have placed a bet of #{@amount}. Is this correct?\n1)Yes\n2)No"
     input = gets.to_i
 
     case input
@@ -44,6 +48,7 @@ class Slots
   end
 
   def processing
+    amount_won = @amount * 2
     aquisition_array =
     [
       "cherry, cherry, cherry",
@@ -60,11 +65,13 @@ class Slots
 
     if (user_spin == "cherry, cherry, cherry") || (user_spin == "peach, peach, peach") || (user_spin == "apple, apple, apple")
       puts "You have a match, Winner!!"
-      print_menu
+      puts "Congratulations, you have won $#{amount_won}."
+      @player.wallet.amount += amount_won
 
     elsif (user_spin == "cherry, peach, apple") || (user_spin == "cherry, apple, peach") || (user_spin == "apple, peach, cherry") || (user_spin == "peach, apple, cherry")
       puts "Sorry, try again"
-      print_menu
+      puts "$#{@amount} has been taken from your wallet."
+      @player.wallet.amount -= @amount
     end
   end
 end
