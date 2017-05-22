@@ -3,6 +3,7 @@ require 'colorize'
 
 require_relative 'player'
 require_relative 'heads-tails'
+require_relative 'slots'
 
 class Casino
   attr_accessor :player, :user_wallet
