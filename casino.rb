@@ -14,19 +14,15 @@ class Casino
   end
 
   def casino_menu
-    #Casino options
-    #Game options
-    #Bankroll
-    #Quit
     playing = true
     while playing
-      puts """Game Menu:\n1)Heads or Tails\n2)Blackjack\n3)Slots\n4)Roulette\n5)Go to Casino locations\n6)Bankroll\n7)Exit"""
+      puts "Game Menu:\n1)Heads or Tails\n2)Blackjack\n3)Slots\n4)Roulette\n5)Go to Casino locations\n6)Bankroll\n7)Exit"
       menu_input = gets.to_i
       case menu_input
       when 1
         HeadsTails.new(@player)
       when 2
-        blackjack.new(@player)
+        BlackJack.new(@player)
       when 3
         Slots.new(@player)
       when 4
