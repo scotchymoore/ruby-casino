@@ -9,14 +9,14 @@ require_relative 'black_jack'
 require_relative 'high_low'
 
 greeting = Artii::Base.new
-puts greeting.asciify('CASINO')
+puts greeting.asciify('CASINO').yellow
 
 `say "Hello, Welcome to our wonderful casino. My name is Steven Hawkings, and i endorse this establishment"`
 
 class Casino
   attr_accessor :player, :user_wallet
   def initialize
-    puts "Welcome to our Ruby Casino!"
+    puts "Welcome to Ruby Casino!!!!!".yellow
     @player = Player.new
     casino_menu
   end
@@ -24,7 +24,7 @@ class Casino
   def casino_menu
     playing = true
     while playing
-      puts "Game Menu:\n1)Heads or Tails\n2)Blackjack\n3)Slots\n4)High Low\n5)Go to Casino locations\n6)Bankroll\n7)Exit"
+      puts "Game Menu:\n1)Heads or Tails\n2)Blackjack\n3)Slots\n4)High Low\n5)Go to Casino locations\n6)Bankroll\n7)Exit".yellow
       menu_input = gets.to_i
       case menu_input
       when 1

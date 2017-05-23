@@ -5,6 +5,8 @@ class Slots
   attr_accessor :amount
 
   def initialize(player)
+    greeting = Artii::Base.new
+    puts greeting.asciify('SLOTS').blue
     puts "Welcome to Slots!!"
     puts "#{player.name} you have a balance of #{player.wallet.amount}."
     @player = player
@@ -34,7 +36,7 @@ class Slots
 
 
   def print_menu
-    puts "Enter *pull* to spin or *quit* to exit"
+    puts "Enter *pull* to spin or *quit* to exit".green
     choice = gets.strip
 
     if choice.downcase == 'quit'
@@ -59,12 +61,12 @@ class Slots
       "peach, apple, cherry",
       "peach, peach, peach"
     ]
-    puts "Ding!"
+    puts "Ding!".yellow
     sleep(1)
-    puts "Ding!"
+    puts "Ding!".blue
     `say "ding, ding, ding, flashing lights ans such"`
     sleep(1)
-    puts "Ding!"
+    puts "Ding!".red
     sleep(1)
     user_spin = aquisition_array.sample
     puts user_spin
