@@ -30,8 +30,7 @@ class HighLow
     puts """You will be shown a random number between 1-10. You will be
 given the choice to pick higher lower. If the next number is the same
 as the choice you given of higher or lower, then you will be shown another
-number to do the same process. You must guess correctly 4 times in a row
-to win.""".green
+number to do the same process. You must guess correctly 1 time to win.""".green
     puts "Please press 1 to play game.".yellow
     choice = gets.to_i
     if choice == 1
@@ -68,7 +67,7 @@ to win.""".green
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     a = numbers.sample
     b = numbers.sample
-    while @player_count < 4
+    if(@player_count < 1)
       puts "The high number is #{numbers.last} and the low is #{numbers.first}\nThe first number is...".green
       sleep (2)
       puts "#{a}\n1)Higher\n2)Lower".yellow
@@ -105,7 +104,6 @@ to win.""".green
       when 1
         HighLow.new(@player)
       when 2
-        @player_count = 4
         puts 'Thanks for playing!!'.green
       end
     end
