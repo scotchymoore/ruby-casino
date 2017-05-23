@@ -31,7 +31,7 @@ class Casino
       when 3
         Slots.new(@player)
       when 4
-        roulette.new(@player)
+        HighLow.new(@player)
       when 5
         locations_menu
       when 6
