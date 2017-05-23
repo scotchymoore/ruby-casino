@@ -84,6 +84,7 @@ class BlackJack
 
     if @player_value == 21
       puts "\n\nBlackjack!  Winner Winner Chicken Dinner!\n"
+      `say "Black Jack! Winner Winner Chicken Dinner"`
       winning_amount = bet* 2
       @player.wallet.amount = @player.wallet.amount + winning_amount
       puts "#{player.name}, you just won $#{winning_amount}."
@@ -123,6 +124,7 @@ def hit
     winning_amount = @bet* 3
     @player.wallet.amount = @player.wallet.amount + winning_amount
     puts "\n\nBlackjack!  Winner Winner Chicken Dinner!\n"
+    `say "Black Jack! Winner Winner Chicken Dinner"`
     puts "#{player.name}, you just won $#{winning_amount}."
     puts "You now have $#{@player.wallet.amount}.\n"
     play_again
