@@ -27,5 +27,20 @@ class HighLow
   end
 
   def game_method
-    
+    while player_count < 5
+    player_count = 0
+    puts "input 1"
+    input = gets.to_i
+    if input == 1
+      player_count + 1
+      puts player_count
+    elsif == 2
+      puts "dumb answer"
+    else
+      puts "do it again."
+      game_method
+    end
   end
+
+
+end
