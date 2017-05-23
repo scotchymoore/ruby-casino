@@ -11,6 +11,8 @@ require_relative 'high_low'
 greeting = Artii::Base.new
 puts greeting.asciify('CASINO')
 
+`say "Hello, Welcome to our wonderful casino. My name is Steven Hawkings, and i endorse this establishment"`
+
 class Casino
   attr_accessor :player, :user_wallet
   def initialize
@@ -26,18 +28,23 @@ class Casino
       menu_input = gets.to_i
       case menu_input
       when 1
+        `say "Lets play Heads or Tails"`
         HeadsTails.new(@player)
       when 2
+        `say "Lets play BlackJack"`
         BlackJack.new(@player)
       when 3
+        `say "Lets play Slots"`
         Slots.new(@player)
-      when 4
+        when 4
+          `say "Lets play High or Low"`
         HighLow.new(@player)
       when 5
         locations_menu
       when 6
         bankroll_method
       when 7
+        `say "Thanks, for playing. Goodbye"`
         exit
       else
         puts "Invalid input. Please try again."

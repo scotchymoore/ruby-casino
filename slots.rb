@@ -62,6 +62,7 @@ class Slots
     puts "Ding!"
     sleep(1)
     puts "Ding!"
+    `say "ding, ding, ding, flashing lights ans such"`
     sleep(1)
     puts "Ding!"
     sleep(1)
@@ -71,6 +72,7 @@ class Slots
     if (user_spin == "cherry, cherry, cherry") || (user_spin == "peach, peach, peach") || (user_spin == "apple, apple, apple")
       puts "-------------"
       puts "You have a match, Winner!!"
+      `say "Wow, you are good"`
       puts "-------------"
       puts "Congratulations, you have won $#{amount_won}."
       @player.wallet.amount += amount_won
@@ -78,6 +80,7 @@ class Slots
     elsif (user_spin == "cherry, peach, apple") || (user_spin == "cherry, apple, peach") || (user_spin == "apple, peach, cherry") || (user_spin == "peach, apple, cherry")
       puts "-------------"
       puts "Sorry, try again"
+      `say "loser"`
       puts "-------------"
       puts "$#{@amount} has been taken from your wallet."
       @player.wallet.amount -= @amount
