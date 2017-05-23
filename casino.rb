@@ -9,10 +9,6 @@ require_relative 'black_jack'
 
 greeting = Artii::Base.new
 puts greeting.asciify('CASINO')
-#Casino options
-#Game options
-#Bankroll
-#Quit
 
 class Casino
   attr_accessor :player, :user_wallet
