@@ -80,12 +80,12 @@ def hit_or_stay
 def hit
   new_card = @deck.sample
   ncv = new_card.value.to_i
-  nv = @player_value += ncv
+  @player_value += ncv
   puts "You got a #{new_card.rank} of #{new_card.suit}"
-  puts "You have #{nv}. "
-  if nv < 21
+  puts "You have #{@player_value}. "
+  if @player_value < 21
     hit_or_stay
-  elsif nv == 21
+  elsif @player_value == 21
     winning_amount = @bet* 3
     @player.wallet.amount = @player.wallet.amount + winning_amount
     puts "\n\nBlackjack!  Winner Winner Chicken Dinner!\n"
@@ -113,26 +113,53 @@ def end_of_game
         @player.wallet.amount = @player.wallet.amount -= @bet
         puts " You lost $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
+
       elsif @dealer_value > 21
         puts "You won!"
         @player.wallet.amount = @player.wallet.amount += (@bet * 1.5)
         puts " You won $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
-      elsif @dealer_value > @nv
+      elsif @dealer_value > @player_value
         puts "You LOSE!  House wins!"
         @player.wallet.amount = @player.wallet.amount -= @bet
         puts " You lost $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
-      elsif @nv > @dealer_value
+      elsif @player_value > @dealer_value
         puts  "You won!"
         @player.wallet.amount = @player.wallet.amount += (@bet * 1.5)
         puts " You won $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
-      else @nv == @dealer_value
+      else @player_value == @dealer_value
         puts "Its a push.  No winner or loser."
         puts "Lets play again."
         play_again
-    end
+      end
+    else
+      if @dealer_value == 21
+        puts "You LOSE!  House wins!"
+        @player.wallet.amount = @player.wallet.amount -= @bet
+        puts " You lost $#{@bet}.  You now have $#{@player.wallet.amount} left."
+        play_again
+      elsif @dealer_value > 21
+        puts "You won!"
+        @player.wallet.amount = @player.wallet.amount += (@bet * 1.5)
+        puts " You won $#{@bet}.  You now have $#{@player.wallet.amount} left."
+        play_again
+      elsif @dealer_value > @player_value
+        puts "You LOSE!  House wins!"
+        @player.wallet.amount = @player.wallet.amount -= @bet
+        puts " You lost $#{@bet}.  You now have $#{@player.wallet.amount} left."
+        play_again
+      elsif @player_value > @dealer_value
+        puts  "You won!"
+        @player.wallet.amount = @player.wallet.amount += (@bet * 1.5)
+        puts " You won $#{@bet}.  You now have $#{@player.wallet.amount} left."
+        play_again
+      else @player_value == @dealer_value
+        puts "Its a push.  No winner or loser."
+        puts "Lets play again."
+        play_again
+      end
   end
 end
 
