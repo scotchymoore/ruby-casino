@@ -17,8 +17,12 @@ class Player
     end
     # puts "What is your gender, #{@name}?"
     # @gender = gets.strip
-    puts 'How much money are you playing with today? The max is $5000.00.'
+    puts 'How much money are you playing with today?'
     amount = gets.to_f
+    if amount < 1
+      puts "Sorry that is invalid, please try again."
+      Player.new
+    end
     @wallet = Wallet.new(amount)
   end
 end

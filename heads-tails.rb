@@ -43,13 +43,8 @@ end
   def ht_game(side_choice)
     bet_won = @bet_amount * 2
     coin = rand(2)
-    if side_choice == coin && 0
-      puts "Congratulations! It is heads!"
-      puts "$#{bet_won} have been added to your wallet."
-      @player.wallet.amount += bet_won
-      puts "-------------\n-------------\n-------------"
-    elsif side_choice == coin && 2
-      puts "Congratulations! It is tails!"
+    if side_choice == coin + 1
+      puts "Congratulations you won!!"
       puts "$#{bet_won} have been added to your wallet."
       @player.wallet.amount += bet_won
       puts "-------------\n-------------\n-------------"
