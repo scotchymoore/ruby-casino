@@ -21,7 +21,7 @@ class Casino
   def casino_menu
     playing = true
     while playing
-      puts "Game Menu:\n1)Heads or Tails\n2)Blackjack\n3)Slots\n4)Roulette\n5)Go to Casino locations\n6)Bankroll\n7)Exit"
+      puts "Game Menu:\n1)Heads or Tails\n2)Blackjack\n3)Slots\n4)High Low\n5)Go to Casino locations\n6)Bankroll\n7)Exit"
       menu_input = gets.to_i
       case menu_input
       when 1
