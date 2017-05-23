@@ -15,7 +15,7 @@ class HeadsTails
       puts "I am sorry, you do not have that much money. Please try again"
       bet
     end
-    puts "You have placed a bet of #{bet_amount}. Is this correct?\n1)Yes\n2)No"
+    puts "You have placed a bet of $#{bet_amount}. Is this correct?\n1)Yes\n2)No"
     input = gets.to_i
     if input == 1
       side_choice
