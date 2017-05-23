@@ -68,7 +68,7 @@ to win.""".green
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     a = numbers.sample
     b = numbers.sample
-    while @player_count < 1
+    while @player_count < 4
       puts "The high number is #{numbers.last} and the low is #{numbers.first}\nThe first number is...".green
       sleep (2)
       puts "#{a}\n1)Higher\n2)Lower".yellow
@@ -106,11 +106,8 @@ to win.""".green
         HighLow.new(@player)
       when 2
         @player_count = 4
-        puts 'Thanks!'
+        puts 'Thanks for playing!!'.green
       end
     end
   end
-
-
 end
-puts 'end'
