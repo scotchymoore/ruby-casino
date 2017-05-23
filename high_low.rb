@@ -1,10 +1,16 @@
+require 'pry'
+
+require_relative 'deck'
+
 class HighLow
-  attr_accessor :bet_amount
+  attr_accessor :bet_amount, :player_count
 
   def initialize (player)
-    puts "Welcome to High-Low #{player.name}!"
+    puts "Welcome to High or Low #{player.name}!"
     puts "You have a balance of #{player.wallet.amount}."
+    puts "You must get 5 consecutive correct to win."
     @player = player
+    @player_count = 0
     bet
   end
 
@@ -29,17 +35,32 @@ class HighLow
   end
 
   def game_method
-    player_count = 0
-    while player_count < 5
-    puts "input 1"
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    a = numbers.sample
+    b = numbers.sample
+    while @player_count < 5
+    puts "The high number is #{numbers.last} and the low is #{numbers.first}\nThe first number is..."
+    sleep (2)
+    puts "#{a}\n1)Higher\n2)Lower"
     input = gets.to_i
-    if input == 1
-      player_count + 1
-      puts player_count
-    else
-      puts "do it again."
-      game_method
+    if a > b
+      if input == 1
+        puts "Congrats! Your number is #{b}."
+        @player_count += 1
+      else
+        puts "Sorry! Your number is #{b}."
+        HighLow.new(@player)
+      end
+    end
+    if a < b
+      if input == 2
+        puts "Congrats! Your number is #{b}."
+        @player_count += 1
+      else
+        puts "Sorry! Your number is #{b}."
+        HighLow.new(@player)
+      end
+    end
     end
   end
-end
 end
