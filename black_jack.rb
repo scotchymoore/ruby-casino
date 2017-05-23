@@ -103,13 +103,11 @@ end
 def end_of_game
   puts "The dealer has"
   @dealer_cards.each do |pc|
-    puts "Dealer have #{pc.rank} of #{pc.suit}"
+    puts "Dealer has #{pc.rank} of #{pc.suit}"
   end
     puts "The Dealer has #{@dealer_value}"
     if @dealer_value < 17
       dealer_hit
-      puts
-      puts
       if @dealer_value == 21
         puts "You LOSE!  House wins!"
         @player.wallet.amount = @player.wallet.amount -= @bet
