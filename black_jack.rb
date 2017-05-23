@@ -5,8 +5,8 @@ class BlackJack
   attr_accessor :deck, :player, :bet
 
   def initialize(player)
-    blackj = Artii::Base.new
-    puts blackj.asciify ('BLACK JACK')
+    greeting = Artii::Base.new
+    puts greeting.asciify('BLACK JACK').red
     @player = player
     @deck = Deck.new.shuffle_cards
     puts "Welcome to Black Jack!\n"
@@ -15,6 +15,40 @@ class BlackJack
 
     # to get a random card out of the deck - @deck.cards.sample
     main_black_jack
+  end
+
+  def main_black_jack
+    puts "\nDo you want to play?
+    1. Yes
+    2. No"
+    play = gets.to_i
+    case play
+    when 1
+      puts "Well alright then, grab a seat and lets play."
+      place_bet
+    when 2
+      puts "Thanks for stopping by but I only talk to players. The all you can eat buffet is over there."
+    else
+      puts "I said are you going to play or leave.  Make up your mind!"
+      main_black_jack
+    end
+  end
+
+  def play_again
+    puts "\n\nDo you want to play again?
+    1. Yes
+    2. No"
+    play = gets.to_i
+    case play
+    when 1
+      puts "Well alright then, grab a seat and lets play."
+      place_bet
+    when 2
+      puts "Thanks for stopping by, it was fun while it lasted.\n\n"
+    else
+      puts "I said are you going to play or leave.  Make up your mind!"
+      play_again
+    end
   end
 
   def place_bet
@@ -163,39 +197,6 @@ def end_of_game
   end
 end
 
-  def main_black_jack
-    puts "\nDo you want to play?
-    1. Yes
-    2. No"
-    play = gets.to_i
-    case play
-    when 1
-      puts "Well alright then, grab a seat and lets play."
-      place_bet
-    when 2
-      puts "Thanks for stopping by but I only talk to players. The all you can eat buffet is over there."
-    else
-      puts "I said are you going to play or leave.  Make up your mind!"
-      main_black_jack
-    end
-  end
-
-  def play_again
-    puts "\n\nDo you want to play again?
-    1. Yes
-    2. No"
-    play = gets.to_i
-    case play
-    when 1
-      puts "Well alright then, grab a seat and lets play."
-      place_bet
-    when 2
-      puts "Thanks for stopping by, it was fun while it lasted.\n\n"
-    else
-      puts "I said are you going to play or leave.  Make up your mind!"
-      play_again
-    end
-  end
 
   def dealer_hit
   new_card = @deck.sample
