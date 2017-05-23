@@ -5,6 +5,8 @@ class BlackJack
   attr_accessor :deck, :player, :bet
 
   def initialize(player)
+    blackj = Artii::Base.new
+    puts blackj.asciify ('BLACK JACK')
     @player = player
     @deck = Deck.new.shuffle_cards
     puts "Welcome to Black Jack!\n"
