@@ -6,6 +6,7 @@ require_relative 'player'
 require_relative 'heads-tails'
 require_relative 'slots'
 require_relative 'black_jack'
+require_relative 'high_low'
 
 greeting = Artii::Base.new
 puts greeting.asciify('CASINO')
