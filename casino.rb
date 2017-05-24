@@ -80,13 +80,13 @@ class Casino
   end
 
   def locations_menu
-    puts "Where would you like to go?\n1)Bar\n2)Restaraunt\n3)Pool\n4)Main menu".yellow
+    puts "Where would you like to go?\n1)Bar\n2)Restaurant\n3)Pool\n4)Main menu".yellow
     choice = gets.to_i
     case choice
     when 1
       bar
     when 2
-      restaraunt
+      restaurant
     when 3
       pool
     when 4
@@ -124,7 +124,7 @@ class Casino
       locations_menu
   end
 
-  def restaraunt
+  def restaurant
 
     rest_scenarios = [
     {scene:"You enjoy all you can eat buffet.", money: -10},
