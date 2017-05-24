@@ -80,34 +80,101 @@ class Casino
   end
 
   def locations_menu
-    puts "Where would you like to go?\n1)Bar\n2)Main menu".yellow
+    puts "Where would you like to go?\n1)Bar\n2)Restaraunt\n3)Pool\n4)Main menu".yellow
     choice = gets.to_i
     case choice
     when 1
       bar
     when 2
+      restaraunt
+    when 3
+      pool
+    when 4
 
     else
       puts "Invalid. Please try again."
     end
   end
+
   def bar
-    rand_money = rand(-200..200)
+
     bar_scenarios = [
-      "Got into a bar fight.",
-      "Got into a bar fight.",
-      "You danced on the bar.",
-      "You bet on a pool game."
-    ]
+      {scene:"Got into a bar fight. Pay fee to get out of jail", money: -200},
+      {scene:"Got into a bar fight.", money: -100},
+      {scene:"You danced on the bar.", money: 100},
+      {scene:"You bet on a pool game.", money: 150},
+      {scene: "You bought shots for everyone at the bar", money: -200},
+      {scene: "You meet a stripper", money: -500},
+      {scene: "You get hit on at the bar and get a phone number", money: 5},
+      {scene: "You find a $100 bill on bathroom floor", money: 100},
+      {scene: "You convince someone you are a celebrity and they buy you drinks", money: 200}
+]
     random_bar = bar_scenarios.sample
-      if rand_money > 0
-        puts "#{random_bar} You gained $#{rand_money}."
-        @player.wallet.amount += rand_money
-        puts "You now have $#{@player.wallet.amount}"
+      if random_bar[:money] > 0
+        puts "#{random_bar[:scene]} You gained $#{random_bar[:money]}."
+        @player.wallet.amount += random_bar[:money]
+        puts "You now have $#{@player.wallet.amount}\n"
       else
-        puts "#{random_bar} You lost $#{rand_money}"
-        @player.wallet.amount += rand_money
-        puts "You now have $#{@player.wallet.amount}"
+        puts "#{random_bar[:scene]} You lost $#{random_bar[:money]}"
+        @player.wallet.amount += random_bar[:money]
+        puts "You now have $#{@player.wallet.amount}\n"
+      end
+
+
+      locations_menu
+  end
+
+  def restaraunt
+
+    rest_scenarios = [
+    {scene:"You enjoy all you can eat buffet.", money: -10},
+    {scene:"You lose your wallet.", money: -200},
+    {scene:"You danced on the table.", money: 100},
+    {scene:"You ate the Old 96er and finished it. Impressive!", money: 150},
+    {scene: "You win a pie eating contest", money: 200},
+    {scene: "You meet a stripper", money: -500},
+    {scene: "You get hit on by the waitress and get a free meal", money: 10},
+    {scene: "You find a $100 bill on bathroom floor", money: 100},
+  ]
+
+    random_rest = rest_scenarios.sample
+      if random_rest[:money] > 0
+        puts "#{random_rest[:scene]} You gained $#{random_rest[:money]}."
+        @player.wallet.amount += random_rest[:money]
+        puts "You now have $#{@player.wallet.amount}\n"
+      else
+        puts "#{random_rest[:scene]} You lost $#{random_rest[:money]}"
+        @player.wallet.amount += random_rest[:money]
+        puts "You now have $#{@player.wallet.amount}\n"
+      end
+
+
+      locations_menu
+  end
+
+  def pool
+
+    pool_scenarios = [
+    {scene:"You rent a cabana to take a nap.", money: -100},
+    {scene:"You jump in the pool and lose your wallet.", money: -200},
+    {scene:"You hang out with a celebrity.", money: 100},
+    {scene:"You win wet t-shirt contest. Impressive!", money: 500},
+    {scene: "You are too drunk in pool. Lifegaurd saves you", money: -200},
+    {scene: "You meet a stripper", money: -500},
+    {scene: "You order bottle service by the pool", money: -300},
+    {scene: "You find a $100 bill on bathroom floor", money: 100},
+    {scene: "You go skinny dipping. BUSTED. Pay fee to get out of jail", money: 500}
+  ]
+
+    random_pool = pool_scenarios.sample
+      if random_pool[:money] > 0
+        puts "#{random_pool[:scene]} You gained $#{random_pool[:money]}."
+        @player.wallet.amount += random_pool[:money]
+        puts "You now have $#{@player.wallet.amount}\n"
+      else
+        puts "#{random_pool[:scene]} You lost $#{random_pool[:money]}"
+        @player.wallet.amount += random_pool[:money]
+        puts "You now have $#{@player.wallet.amount}\n"
       end
       locations_menu
   end

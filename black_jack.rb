@@ -162,7 +162,7 @@ def end_of_game
       elsif @dealer_value > 21
         puts "You won!".green
         `say -v "Lee" "Boo yah Player wins"`
-        @player.wallet.amount = @player.wallet.amount += (@bet * 1.5)
+        @player.wallet.amount = @player.wallet.amount += (@bet * 2)
         puts " You won $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
       elsif @dealer_value > @player_value
@@ -173,7 +173,7 @@ def end_of_game
       elsif @player_value > @dealer_value
         puts  "You won!".green
         `say -v "Lee" "Nice job here is your winnings"`
-        @player.wallet.amount = @player.wallet.amount += (@bet * 1.5)
+        @player.wallet.amount = @player.wallet.amount += (@bet * 2)
         puts " You won $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
       else @player_value == @dealer_value
@@ -192,7 +192,7 @@ def end_of_game
       elsif @dealer_value > 21
         puts "You won!".green
         `say -v "Lee" "You got lucky"`
-        @player.wallet.amount = @player.wallet.amount += (@bet * 1.5)
+        @player.wallet.amount = @player.wallet.amount += (@bet * 2)
         puts " You won $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
       elsif @dealer_value > @player_value
@@ -204,7 +204,7 @@ def end_of_game
       elsif @player_value > @dealer_value
         puts  "You won!".green
         `say -v "Lee" "We have winner"`
-        @player.wallet.amount = @player.wallet.amount += (@bet * 1.5)
+        @player.wallet.amount = @player.wallet.amount += (@bet * 2)
         puts " You won $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
       else @player_value == @dealer_value
@@ -227,4 +227,7 @@ end
       dealer_hit
     end
   end
+
+
+
 end

@@ -10,9 +10,11 @@ class Card
    @value = rank
    if rank == 'K' || rank == 'Q' || rank == 'J'
      @value = 10
-   end
-   if rank == 'A'
+   elsif rank == 'A'
      @value = 11
    end
- end
+
+
+end
+
 end
