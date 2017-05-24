@@ -10,7 +10,7 @@ class BlackJack
     @player = player
     @deck = Deck.new.shuffle_cards
     puts "Welcome to Black Jack!\n"
-
+    `say -v "Lee" "Welcome to Black Jack  I'm Lee and I will be your dealer.  Lets have some fun"`
     # get all cards from deck - @deck.cards
 
     # to get a random card out of the deck - @deck.cards.sample
@@ -21,15 +21,19 @@ class BlackJack
     puts "\nDo you want to play?
     1. Yes
     2. No"
+    `say -v "Lee" "Do you want to play"`
     play = gets.to_i
     case play
     when 1
       puts "Well alright then, grab a seat and lets play."
+      `say -v "Lee" "Well alright then, grab a seat and lets play."`
       place_bet
     when 2
       puts "Thanks for stopping by but I only talk to players. The all you can eat buffet is over there."
+      `say -v "Lee" "Thanks for stopping by but I only talk to players. The all you can eat buffet is over there."`
     else
       puts "I said are you going to play or leave.  Make up your mind!"
+      `say -v "Lee" "I said are you going to play or leave.  Make up your mind!"`
       main_black_jack
     end
   end
@@ -38,13 +42,16 @@ class BlackJack
     puts "\n\nDo you want to play again?
     1. Yes
     2. No"
+    `say -v "Lee" "Do You want to play again"`
     play = gets.to_i
     case play
     when 1
       puts "Well alright then, grab a seat and lets play."
+      `say -v "Lee" "That's the spirit. No one likes a quitter"`
       place_bet
     when 2
       puts "Thanks for stopping by, it was fun while it lasted.\n\n"
+      `say -v "Lee" "We can't all be winners. you might have better luck at another game"`
     else
       puts "I said are you going to play or leave.  Make up your mind!"
       play_again
@@ -83,8 +90,8 @@ class BlackJack
     puts "#{player.name} has #{@player_value}\n\n"
 
     if @player_value == 21
-      puts "\n\nBlackjack!  Winner Winner Chicken Dinner!\n"
-      `say "Black Jack! Winner Winner Chicken Dinner"`
+      puts "\n\nBlackjack!  Winner Winner Chicken Dinner!\n".green
+      `say -v "Lee" "Black Jack! Winner Winner Chicken Dinner"`
       winning_amount = bet* 2
       @player.wallet.amount = @player.wallet.amount + winning_amount
       puts "#{player.name}, you just won $#{winning_amount}."
@@ -108,6 +115,7 @@ def hit_or_stay
       end_of_game
     else
       puts "Did I stutter? Do you want to hit or stay?"
+      `say -v "Lee" "Did I stutter? Do you want to hit or stay?"`
       hit_or_stay
     end
   end
@@ -123,13 +131,14 @@ def hit
   elsif @player_value == 21
     winning_amount = @bet* 3
     @player.wallet.amount = @player.wallet.amount + winning_amount
-    puts "\n\nBlackjack!  Winner Winner Chicken Dinner!\n"
-    `say "Black Jack! Winner Winner Chicken Dinner"`
+    puts "\n\nBlackjack!  Winner Winner Chicken Dinner!\n".green
+    `say -v "Lee" "Black Jack! Winner Winner Chicken Dinner"`
     puts "#{player.name}, you just won $#{winning_amount}."
     puts "You now have $#{@player.wallet.amount}.\n"
     play_again
   else
-    puts "You LOSE!  House wins!"
+    puts "You LOSE!  House wins!".green
+    `say -v "Lee" "You went over. you lose. I thought you said you were good at this"`
     @player.wallet.amount = @player.wallet.amount -= @bet
     puts " You lost $#{@bet}.  You now have $#{@player.wallet.amount} left."
     play_again
@@ -145,55 +154,63 @@ def end_of_game
     if @dealer_value < 17
       dealer_hit
       if @dealer_value == 21
-        puts "You LOSE!  House wins!"
+        puts "You LOSE!  House wins!".yellow
         @player.wallet.amount = @player.wallet.amount -= @bet
         puts " You lost $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
 
       elsif @dealer_value > 21
-        puts "You won!"
+        puts "You won!".green
+        `say -v "Lee" "Boo yah Player wins"`
         @player.wallet.amount = @player.wallet.amount += (@bet * 1.5)
         puts " You won $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
       elsif @dealer_value > @player_value
-        puts "You LOSE!  House wins!"
+        puts "You LOSE!  House wins!".yellow
         @player.wallet.amount = @player.wallet.amount -= @bet
         puts " You lost $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
       elsif @player_value > @dealer_value
-        puts  "You won!"
+        puts  "You won!".green
+        `say -v "Lee" "Nice job here is your winnings"`
         @player.wallet.amount = @player.wallet.amount += (@bet * 1.5)
         puts " You won $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
       else @player_value == @dealer_value
-        puts "Its a push.  No winner or loser."
+        puts "Its a push.  No winner or loser.".red
         puts "Lets play again."
+        `say -v "Lee" "Aw Crikey a push  no winner lets play again"`
         play_again
       end
     else
       if @dealer_value == 21
-        puts "You LOSE!  House wins!"
+        puts "You LOSE!  House wins!".yellow
+        `say -v "Lee" "Tough break for you. Great for me"`
         @player.wallet.amount = @player.wallet.amount -= @bet
         puts " You lost $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
       elsif @dealer_value > 21
-        puts "You won!"
+        puts "You won!".green
+        `say -v "Lee" "You got lucky"`
         @player.wallet.amount = @player.wallet.amount += (@bet * 1.5)
         puts " You won $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
       elsif @dealer_value > @player_value
-        puts "You LOSE!  House wins!"
+        puts "You LOSE!  House wins!".yellow
+        `say -v "Lee" "Dealer wins. I like you that you don't get tired of losing"`
         @player.wallet.amount = @player.wallet.amount -= @bet
         puts " You lost $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
       elsif @player_value > @dealer_value
-        puts  "You won!"
+        puts  "You won!".green
+        `say -v "Lee" "We have winner"`
         @player.wallet.amount = @player.wallet.amount += (@bet * 1.5)
         puts " You won $#{@bet}.  You now have $#{@player.wallet.amount} left."
         play_again
       else @player_value == @dealer_value
         puts "Its a push.  No winner or loser."
         puts "Lets play again."
+        `say -v "Lee" "Aw Crikey a push  no winner lets play again"`
         play_again
       end
   end
