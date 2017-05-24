@@ -163,7 +163,7 @@ class Casino
     {scene: "You meet a stripper", money: -500},
     {scene: "You order bottle service by the pool", money: -300},
     {scene: "You find a $100 bill on bathroom floor", money: 100},
-    {scene: "You go skinny dipping. BUSTED. Pay fee to get out of jail", money: 500}
+    {scene: "You go skinny dipping. BUSTED. Pay fee to get out of jail", money: -500}
   ]
 
     random_pool = pool_scenarios.sample
